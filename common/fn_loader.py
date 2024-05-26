@@ -16,6 +16,7 @@ class FnDataLoader:
         self.dataguide_df.columns = pd.MultiIndex.from_tuples([(symbol_name, item_name) for symbol, symbol_name, kind, item, item_name, frequency in self.dataguide_df.columns])
         self.dataguide_df.set_index(('Symbol Name', 'Item Name'), inplace=True)
         self.dataguide_df.index.name = 'Date'
+        self.dataguide_df.columns = self.dataguide_df.columns.remove_unused_levels() # .drop() does not remove multiindex levels
     
     def get_universe(self):
         return self.dataguide_df.columns.levels[0]
