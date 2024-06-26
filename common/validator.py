@@ -64,14 +64,14 @@ class Alpha:
         assert all(col in fncfg.ASSET_ALIASES.values() for col in self.weights_df.columns), "Invalid asset names"
         assert self.weights_df.index.is_monotonic_increasing, "Index is not sorted"
 
-    def _validate_weights(self):
+    def _validate_weights(self, tol=1e-6):
         """
         Ensures that weights in the DataFrame sum to 1 for each row.
 
         Raises:
             AssertionError: If any row's weights do not sum to 1.
         """
-        assert self.weights_df.sum(axis=1).eq(1).all(), "Weights do not sum to 1"
+        assert np.isclose(self.weights_df.sum(axis=1), 1, atol=tol).all(), "Weights do not sum to approximately 1"
 
     def _validate_constraints(self):
         """
