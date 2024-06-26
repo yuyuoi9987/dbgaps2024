@@ -1,4 +1,5 @@
 ASSET_ALIASES = {
+    '현금': 'cash',
     'KOSEF 단기자금': 'shortterm',
     'KOSEF 미국달러선물': 'usd',
     'KOSEF 미국달러선물인버스': 'usdinv',
@@ -13,8 +14,10 @@ ASSET_ALIASES = {
     'TIGER 유로스탁스50(합성 H)': 'euro50',
     'TIGER 미국S&P500선물(H)': 'sp500',
     'TIGER 코스닥150': 'kosdaq150',
-    'KODEX 200': 'kodex200'
+    'KODEX 200': 'kodex200',
 }
+
+ALIASES_ASSET = {v: k for k, v in ASSET_ALIASES.items()}
 
 ITEM_ALIASES = {
     '거래대금(원)': 'moneyvolume',
@@ -24,3 +27,5 @@ ITEM_ALIASES = {
     '수정저가(원)': 'adjlow',
     '수정주가(원)': 'adjclose'
 }
+
+ALIASES_ITEM = {v: k for k, v in ITEM_ALIASES.items()}
